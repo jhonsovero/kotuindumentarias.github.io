@@ -1,0 +1,257 @@
+/* VARIABLES DE COLOR */
+:root {
+    --color-cream: #FDFBF7;      /* Crema suave */
+    --color-brown: #5D4037;      /* Marrón elegante */
+    --color-petrol: #004D40;     /* Verde Petróleo */
+    --color-red: #D32F2F;        /* Rojo Botón */
+    --color-purple: #7B1FA2;     /* Morado Botón */
+    --color-white: #ffffff;
+    
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    --header-height: 100px; /* Altura estimada */
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-white);
+    color: var(--color-brown);
+    padding-top: var(--header-height); /* Para compensar el menú fijo */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- CABECERA FIJA (DISEÑO GRID DE 4 CUADRANTES) --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-cream);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 3px solid var(--color-petrol); /* Detalle en verde petroleo */
+}
+
+.header-grid {
+    display: grid;
+    /* Dos columnas: Izquierda (Logo/Menu) y Derecha (Contacto/Boton) */
+    grid-template-columns: 1fr 1fr; 
+    /* Dos filas: Arriba y Abajo */
+    grid-template-rows: auto auto; 
+    row-gap: 15px; /* Espacio entre la fila superior e inferior */
+    align-items: center;
+}
+
+/* 1. Logo (Arriba Izquierda) */
+.logo-area {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-brown);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 2. Contacto (Arriba Derecha) */
+.contact-area {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--color-brown);
+    font-weight: 600;
+}
+.contact-area a {
+    color: var(--color-petrol);
+    text-decoration: none;
+}
+
+/* 3. Menú (Abajo Izquierda - Debajo del Logo) */
+.nav-area {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-brown);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+.nav-links a:hover {
+    color: var(--color-petrol);
+}
+
+/* 4. CTA Botón (Abajo Derecha - Debajo del Correo) */
+.cta-area {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    text-align: right;
+}
+
+/* --- BOTONES GENERALES --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn-red {
+    background-color: var(--color-red);
+    color: white;
+}
+.btn-red:hover {
+    background-color: #b71c1c; /* Rojo más oscuro */
+}
+
+.btn-purple {
+    background-color: var(--color-purple);
+    color: white;
+}
+.btn-purple:hover {
+    background-color: #4a148c; /* Morado más oscuro */
+}
+
+/* --- BANNER (HERO SECTION) --- */
+.hero-banner {
+    position: relative;
+    height: 85vh; /* Altura del banner */
+    background-image: url('https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=1600&auto=format&fit=crop'); /* Imagen fondo de oficina/taller */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; /* Centrado vertical */
+}
+
+/* Overlay Verde Petróleo sobre la imagen */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-petrol);
+    opacity: 0.8; /* Transparencia para ver la imagen de fondo */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Sobre el overlay */
+    max-width: 700px;
+    /* Alineación izquierda como se pidió */
+    text-align: left; 
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--color-cream); /* Crema para contraste sobre verde oscuro */
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-white);
+    margin-bottom: 35px;
+    font-weight: 400;
+    border-left: 4px solid var(--color-cream);
+    padding-left: 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* --- RESPONSIVIDAD (MÓVIL) --- */
+.hamburger { display: none; }
+
+@media (max-width: 900px) {
+    .header-grid {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto;
+        padding: 10px 0;
+    }
+    
+    /* En móvil, simplificamos: Logo Izq, Menu hamburguesa Der */
+    .contact-area, .cta-area {
+        display: none; /* Ocultamos contacto y botón rojo superior en móvil por espacio */
+    }
+    
+    .nav-area {
+        position: fixed;
+        top: 70px; /* Altura del header móvil */
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--color-cream);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .nav-area.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        cursor: pointer;
+    }
+    .hamburger span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: var(--color-brown);
+        margin: 5px 0;
+    }
+
+    .hero-title { font-size: 2.5rem; }
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .hero-buttons .btn { text-align: center; }
+}
